@@ -89,16 +89,15 @@ public class Main {
         long duracionTareaDias = time.convert(duracionTarea, TimeUnit.MILLISECONDS);
 */
 
-        Date fechaInicial = 23-10-2023;
-        Date fechaFinal = formato.parse("23/10/2023");
+        Date fechaInicial = new Date(2023, 10, 01);
+        Date fechaFinal = new Date(2023, 10, 30);
 
         LocalDate localDatefechaInicial = LocalDate.parse("2018-05-06", DateTimeFormatter.ISO_LOCAL_DATE);
         LocalDate localDatefechaFinal = LocalDate.parse("2018-05-30", DateTimeFormatter.ISO_LOCAL_DATE);
 
-        long diff = ChronoUnit.DAYS.between(fechaInicial, fechaFinal);
-        System.out.println("difference is : " + diff);
+        long duracionTarea = ChronoUnit.DAYS.between(localDatefechaInicial, localDatefechaFinal);
 
-        fincaUQ.crearTarea(1, "123", fechaInicial, fechaFinal, "Pintar el hangar");
+        fincaUQ.crearTarea(1, "123", fechaInicial, fechaFinal, "Pintar el hangar", duracionTarea);
 
 
 

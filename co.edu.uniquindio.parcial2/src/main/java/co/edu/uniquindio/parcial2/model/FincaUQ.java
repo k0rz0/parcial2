@@ -145,9 +145,10 @@ public class FincaUQ {
 
     }
 
-    public void crearTarea(int numTarea, String cedulaEmpleado, Date fechaInicio, Date fechaFin, String descripcion) {
+    public void crearTarea(int numTarea, String cedulaEmpleado, Date fechaInicio, Date fechaFin, String descripcion, long duracionTarea) {
         Tarea tarea = new Tarea();
         tarea.setNumeroTarea(numTarea);
+        tarea.setDuracionTarea(duracionTarea);
 
         Empleado empleadoAsociado = ObtenerEmpleado(cedulaEmpleado);
 
