@@ -1,5 +1,7 @@
 package co.edu.uniquindio.parcial2.model;
+
 import java.util.Date;
+
 import co.edu.uniquindio.parcial2.enumeracion.TipoContrato;
 
 import javax.swing.*;
@@ -65,8 +67,22 @@ public class FincaUQ {
             getListaEmpleados().add(empleado);
         }
 
-
     }
+
+    public void crearAdministrador(String nombre, String apellido, String cedula, int edad, double salario, int numeroHorasTrabajo, FincaUQ fincaUQ, TipoContrato tipoContrato) {
+
+        Administrador administrador = new Administrador(nombre, apellido, cedula, edad, salario, numeroHorasTrabajo, tipoContrato);
+        administrador.setOwnedByFicaUQ(fincaUQ);
+        getListaEmpleados().add(administrador);
+    }
+
+    public void crearJornalero(String nombre, String apellido, String cedula, int edad, double salario, int numeroHorasTrabajo, FincaUQ fincaUQ, TipoContrato tipoContrato) {
+
+        Jornalero jornalero = new Jornalero(nombre, apellido, cedula, edad, salario, numeroHorasTrabajo, tipoContrato);
+        jornalero.setOwnedByFicaUQ(fincaUQ);
+        getListaEmpleados().add(jornalero);
+    }
+
 
     public void actualizarEmpleado(String nombre, String apellido, String cedula, int edad, double salario, int numeroHorasTrabajo, FincaUQ fincaUQ) {
 
@@ -146,8 +162,8 @@ public class FincaUQ {
     private Empleado ObtenerEmpleado(String cedulaEmpleado) {
         Empleado empleadoEncontrado = null;
 
-        for (Empleado empleado:getListaEmpleados()) {
-            if (empleado.getCedula().equals(cedulaEmpleado)){
+        for (Empleado empleado : getListaEmpleados()) {
+            if (empleado.getCedula().equals(cedulaEmpleado)) {
                 empleadoEncontrado = empleado;
                 break;
             }

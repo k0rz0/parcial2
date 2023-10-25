@@ -1,13 +1,13 @@
 package co.edu.uniquindio.parcial2.ejercicio1;
-
 import co.edu.uniquindio.parcial2.enumeracion.TipoContrato;
 import co.edu.uniquindio.parcial2.model.FincaUQ;
-
 import javax.swing.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,10 +16,9 @@ public class Main {
         FincaUQ fincaUQ = inicializarDatosPrueba();
 
         //Create
-        crearEmpleado(fincaUQ, "Leonardo", "Gallego", "10978246", 26, 1500000, 42, TipoContrato.MEDIO_TIEMPO);
-        crearEmpleado(fincaUQ,"Ana", "Rodríguez", "40892176", 24, 1400000, 37, TipoContrato.HORAS);
-        crearEmpleado(fincaUQ,"Carlos", "Gómez", "30876521", 28, 1600000, 40, TipoContrato.TIEMPO_COMPLETO);
-        //solicitarDatosClienteCrear(fincaUQ);
+        crearAdministrador(fincaUQ, "José", "Strombord", "124578", 26, 1500000, 42, TipoContrato.MEDIO_TIEMPO);
+        crearJornalero(fincaUQ,"Ana", "Rodríguez", "235689", 24, 1400000, 37, TipoContrato.HORAS);
+
 
         crearTarea(fincaUQ);
 
@@ -53,9 +52,16 @@ public class Main {
         return new FincaUQ("Uniquindio");
     }
 
-    private static void crearEmpleado(FincaUQ fincaUQ, String nombre, String apellido, String cedula, int edad,
+    private static void crearAdministrador(FincaUQ fincaUQ, String nombre, String apellido, String cedula, int edad,
                                       double salario, int numeroHorasTrabajo, TipoContrato tipoContrato) {
-        fincaUQ.crearEmpleado(nombre, apellido, cedula, edad, salario, numeroHorasTrabajo, fincaUQ, tipoContrato);
+
+        fincaUQ.crearAdministrador(nombre, apellido, cedula, edad, salario, numeroHorasTrabajo, fincaUQ, tipoContrato);
+    }
+
+    private static void crearJornalero(FincaUQ fincaUQ, String nombre, String apellido, String cedula, int edad,
+                                           double salario, int numeroHorasTrabajo, TipoContrato tipoContrato) {
+
+        fincaUQ.crearJornalero(nombre, apellido, cedula, edad, salario, numeroHorasTrabajo, fincaUQ, tipoContrato);
     }
 
     private static void actualizarEmpleado(FincaUQ fincaUQ, String cedula) {
@@ -74,15 +80,27 @@ public class Main {
     private static void crearTarea(FincaUQ fincaUQ) {
         /*SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
-        String fechaInicial = "23/10/2023";
-        String fechaFinal = "30/10/2023";
+        Date fechaInicial = formato.parse("23-10-2023");
+        Date fechaFinal = formato.parse("23/10/2023");
 
-        Date fecha = formato.parse(fechaInicial);
+        long duracionTarea = fechaInicial.getTime() - fechaFinal.getTime();
 
-        Date fechaIni = Date.parse(fechaInicial, "dd/MM/yyyy");
-        Date fechaFin = Date.parse(fechaFinal, "dd/MM/yyyy");
+        TimeUnit time = TimeUnit.DAYS;
+        long duracionTareaDias = time.convert(duracionTarea, TimeUnit.MILLISECONDS);
+*/
 
-        fincaUQ.crearTarea(1, "123", fechaIni, fechaFin, "Pintar el hangar");*/
+        Date fechaInicial = 23-10-2023;
+        Date fechaFinal = formato.parse("23/10/2023");
+
+        LocalDate localDatefechaInicial = LocalDate.parse("2018-05-06", DateTimeFormatter.ISO_LOCAL_DATE);
+        LocalDate localDatefechaFinal = LocalDate.parse("2018-05-30", DateTimeFormatter.ISO_LOCAL_DATE);
+
+        long diff = ChronoUnit.DAYS.between(fechaInicial, fechaFinal);
+        System.out.println("difference is : " + diff);
+
+        fincaUQ.crearTarea(1, "123", fechaInicial, fechaFinal, "Pintar el hangar");
+
+
 
     }
 

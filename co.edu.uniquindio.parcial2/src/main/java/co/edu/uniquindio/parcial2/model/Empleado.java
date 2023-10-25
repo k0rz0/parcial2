@@ -87,13 +87,14 @@ public class Empleado extends Persona{
     @Override
     public String toString() {
         return "Empleado{" +
-                "nombre='" + nombre + '\'' +
+                "salario=" + salario +
+                ", numeroHorasTrabajo=" + numeroHorasTrabajo +
+                ", ownedByFincaUQ=" + ownedByFincaUQ +
+                ", tipoContrato=" + tipoContrato +
+                ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
                 ", cedula='" + cedula + '\'' +
                 ", edad=" + edad +
-                ", salario=" + salario +
-                ", numeroHorasTrabajo=" + numeroHorasTrabajo +
-                ", tipoContrato=" + tipoContrato +
                 '}';
     }
 }
