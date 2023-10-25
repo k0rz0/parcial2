@@ -124,26 +124,6 @@ public class FincaUQ {
         return null;
     }
 
-    public void mostrarInformacionEmpleados(FincaUQ fincaUQ) {
-        List<Empleado> listaEmpeleados = fincaUQ.getListaEmpleados();
-        String mensaje = "";
-        int tamanioLista = listaEmpeleados.size();
-
-       /* for (int i = 0; i < tamanioLista; i++) {
-            Empleado empleado = listaEmpeleados.get(i);
-            mensaje += empleado.toString().replace("Empleado{", "").replace("}", "") + "\n";
-            System.out.println(empleado.toString().replace("Empleado{", "").replace("}", ""));
-        }*/
-
-
-        for (Empleado empleado : getListaEmpleados()) {
-            mensaje += empleado.toString().replace("Empleado{", "").replace("}", "") + "\n";
-            System.out.println(empleado.toString().replace("Empleado{", "").replace("}", ""));
-        }
-
-        JOptionPane.showMessageDialog(null, mensaje);
-
-    }
 
     public void crearTarea(int numTarea, String cedulaEmpleado, Date fechaInicio, Date fechaFin, String descripcion, long duracionTarea) {
         Tarea tarea = new Tarea();
@@ -174,5 +154,21 @@ public class FincaUQ {
 
     }
 
+    private void ObtenerEmpleadoMayorCantidadHoras(String cedulaEmpleado) {
+        Empleado empleadoEncontrado = null;
+
+        List<Empleado> listaEmpeleados = getListaEmpleados();
+        int tamanioLista = listaEmpeleados.size();
+
+        Empleado empleado1 = listaEmpeleados.get(0);
+        Empleado empleado2 = listaEmpeleados.get(1);
+
+        if (empleado1.getNumeroHorasTrabajo() > empleado2.getNumeroHorasTrabajo()){
+            System.out.println(empleado1.toString().replace("Empleado{", "").replace("}", ""));
+        }else {
+            System.out.println(empleado2.toString().replace("Empleado{", "").replace("}", ""));
+        }
+
+    }
 
 }

@@ -16,34 +16,17 @@ public class Main {
         FincaUQ fincaUQ = inicializarDatosPrueba();
 
         //Create
-        crearAdministrador(fincaUQ, "José", "Strombord", "124578", 26, 1500000, 42, TipoContrato.MEDIO_TIEMPO);
-        crearJornalero(fincaUQ,"Ana", "Rodríguez", "235689", 24, 1400000, 37, TipoContrato.HORAS);
+        crearAdministrador(fincaUQ, "José", "Strombord", "123", 26, 1500000, 42, TipoContrato.MEDIO_TIEMPO);
+        crearJornalero(fincaUQ,"Ana", "Rodríguez", "456", 24, 1400000, 37, TipoContrato.HORAS);
 
 
         crearTarea(fincaUQ);
+        empleadoConMayorcantidadHoras(fincaUQ);
 
 
-        //Information create
-        System.out.println("\nCreate");
-        mostrarInformacionClientes(fincaUQ);
+    }
 
-        //Update
-        actualizarEmpleado(fincaUQ, "10978246");
-        //solicitarDatosClienteEditar(supermercado);
-
-        //Information update
-        System.out.println("\nUpdate");
-        mostrarInformacionClientes(fincaUQ);
-
-        //Delete
-        EliminarEmpleado(fincaUQ, "10978246");
-
-        //Information delete
-        System.out.println("\nDelete");
-        mostrarInformacionClientes(fincaUQ);
-
-        //Read
-        //mostrarInformacionClientes(fincaUQ);
+    private static void empleadoConMayorcantidadHoras(FincaUQ fincaUQ) {
 
 
     }
@@ -78,64 +61,78 @@ public class Main {
 
 
     private static void crearTarea(FincaUQ fincaUQ) {
-        /*SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-
-        Date fechaInicial = formato.parse("23-10-2023");
-        Date fechaFinal = formato.parse("23/10/2023");
-
-        long duracionTarea = fechaInicial.getTime() - fechaFinal.getTime();
-
-        TimeUnit time = TimeUnit.DAYS;
-        long duracionTareaDias = time.convert(duracionTarea, TimeUnit.MILLISECONDS);
-*/
-
+       /*
+       *Creación Tarea 1
+       */
         Date fechaInicial = new Date(2023, 10, 01);
         Date fechaFinal = new Date(2023, 10, 30);
 
-        LocalDate localDatefechaInicial = LocalDate.parse("2018-05-06", DateTimeFormatter.ISO_LOCAL_DATE);
+        LocalDate localDatefechaInicial = LocalDate.parse("2018-05-01", DateTimeFormatter.ISO_LOCAL_DATE);
         LocalDate localDatefechaFinal = LocalDate.parse("2018-05-30", DateTimeFormatter.ISO_LOCAL_DATE);
 
         long duracionTarea = ChronoUnit.DAYS.between(localDatefechaInicial, localDatefechaFinal);
 
         fincaUQ.crearTarea(1, "123", fechaInicial, fechaFinal, "Pintar el hangar", duracionTarea);
 
+        /*
+         *Creación Tarea 1
+         */
+        Date fechaInicial2 = new Date(2023, 10, 01);
+        Date fechaFinal2 = new Date(2023, 10, 05);
+
+        LocalDate localDatefechaInicial2 = LocalDate.parse("2018-05-01", DateTimeFormatter.ISO_LOCAL_DATE);
+        LocalDate localDatefechaFinal2 = LocalDate.parse("2018-05-30", DateTimeFormatter.ISO_LOCAL_DATE);
+
+        long duracionTarea2 = ChronoUnit.DAYS.between(localDatefechaInicial2, localDatefechaFinal2);
+
+        fincaUQ.crearTarea(2, "123", fechaInicial2, fechaFinal2, "Barrer", duracionTarea2);
+
+        /*
+         *Creación Tarea 3
+         */
+
+        Date fechaInicial3 = new Date(2023, 10, 15);
+        Date fechaFinal3 = new Date(2023, 10, 20);
+
+        LocalDate localDatefechaInicial3 = LocalDate.parse("2018-05-01", DateTimeFormatter.ISO_LOCAL_DATE);
+        LocalDate localDatefechaFinal3 = LocalDate.parse("2018-05-30", DateTimeFormatter.ISO_LOCAL_DATE);
+
+        long duracionTarea3 = ChronoUnit.DAYS.between(localDatefechaInicial3, localDatefechaFinal3);
+
+        fincaUQ.crearTarea(3, "456", fechaInicial3, fechaFinal3, "Limpiar", duracionTarea3);
+
+        /*
+         *Creación Tarea 4
+         */
+
+        Date fechaInicial4 = new Date(2023, 10, 29);
+        Date fechaFinal4 = new Date(2023, 10, 30);
+
+        LocalDate localDatefechaInicial4 = LocalDate.parse("2018-05-01", DateTimeFormatter.ISO_LOCAL_DATE);
+        LocalDate localDatefechaFinal4 = LocalDate.parse("2018-05-30", DateTimeFormatter.ISO_LOCAL_DATE);
+
+        long duracionTarea4 = ChronoUnit.DAYS.between(localDatefechaInicial4, localDatefechaFinal4);
+
+        fincaUQ.crearTarea(4, "456", fechaInicial4, fechaFinal4, "Coger café", duracionTarea4);
+
+        /*
+         *Creación Tarea 4
+         */
+
+        Date fechaInicial5 = new Date(2023, 10, 28);
+        Date fechaFinal5 = new Date(2023, 10, 30);
+
+        LocalDate localDatefechaInicial5 = LocalDate.parse("2018-05-01", DateTimeFormatter.ISO_LOCAL_DATE);
+        LocalDate localDatefechaFinal5 = LocalDate.parse("2018-05-30", DateTimeFormatter.ISO_LOCAL_DATE);
+
+        long duracionTarea5 = ChronoUnit.DAYS.between(localDatefechaInicial5, localDatefechaFinal5);
+
+        fincaUQ.crearTarea(5, "456", fechaInicial5, fechaFinal5, "Podar", duracionTarea5);
+
 
 
     }
 
 
-    //-------------------------------------------------------------------------------
-
-    public static int leerEntero(String mensaje) {
-        int dato = Integer.parseInt(JOptionPane.showInputDialog(mensaje));
-        return dato;
-    }
-
-    private static void solicitarDatosClienteCrear(FincaUQ fincaUQ) {
-        String nombres = leerString("Ingrese los nombres");
-        String apellidos = leerString("Ingrese los apellidos");
-        String cedula = leerString("Ingrese la cedula");
-        int edad = leerEntero("Ingrese la edad");
-        double salario = leerDouble("Ingrese el salario");
-        int numHorasTrabajo = leerEntero("Ingrese las horas de trabajo");
-
-        //fincaUQ.crearEmpleado(nombres, apellidos, cedula, edad, salario, numHorasTrabajo, fincaUQ);
-
-    }
-
-    public static double leerDouble(String mensaje) {
-        double dato = Double.parseDouble(JOptionPane.showInputDialog(mensaje));
-        return dato;
-    }
-
-    public static String leerString(String mensaje) {
-        String respuesta = "";
-        respuesta = JOptionPane.showInputDialog(mensaje);
-        return respuesta;
-    }
-
-    private static void mostrarInformacionClientes(FincaUQ fincaUQ) {
-        fincaUQ.mostrarInformacionEmpleados(fincaUQ);
-    }
 
 }
